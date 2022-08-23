@@ -1,5 +1,7 @@
 FROM php:7.1.17-apache
-LABEL maintainer="Jaivic"
+#LABEL maintainer="Jaivic"
+LABEL maintainer="Juan G"
+
 
 RUN a2enmod rewrite
 
