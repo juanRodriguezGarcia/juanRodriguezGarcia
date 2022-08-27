@@ -14,7 +14,7 @@ pipeline {
      
       steps {
           script {			
-           sh "echo 'hola mundo'"
+           sh "echo 'hola mundo desde GIT'"
         }
       }
     }
@@ -22,14 +22,14 @@ pipeline {
   post {
       always {          
           deleteDir()
-           sh "echo 'fase always'"
+           sh "echo 'ESTA FASE SIEMPRE SE EJECUTA SIN IMPORTAR SI FUE FALLIDO O NO'"
       }
       success {
-            sh "echo 'fase success'"
+            sh "echo 'ESTA FASE SE EJECUTA SOLAMENTE SI FUE EXITOSO'"
         }
 
       failure {
-            sh "echo 'fase failure'"
+            sh "echo 'ESTA FASE SE EJECUTA SI FUE FALLIDO'"
       }
       
   }
