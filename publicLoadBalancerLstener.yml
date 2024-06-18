@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: The template used to create an ECS Service from the ECS Console.
+Parameters:
+  SecurityGroupIDs:
+    Type: CommaDelimitedList
+    Default: sg-a48c37c6
+  SubnetIDs:
+    Type: CommaDelimitedList
+    Default: subnet-0966cb7824e047bb5, subnet-2288de58
+  LoadBalancerName:
+    Type: String
+    Default: balanceador-test-v2
+Resources:
+  LoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Type: application
+      Name: balanceador-test-v2
+      SecurityGroups: !Ref SecurityGroupIDs
+      Subnets: !Ref SubnetIDs
+     
+Outputs:
+  LoadBalancer:
+    Description: The created load balancer.
+    Value: !Ref LoadBalancer

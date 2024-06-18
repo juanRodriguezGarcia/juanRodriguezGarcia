@@ -1,0 +1,88 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-2:134383757275:task-definition/nginx-fargate:7",
+    "containerDefinitions": [
+        {
+            "name": "contenedor-fargate",
+            "image": "juangrodriguez10/imagen-fargate:imagen-nginx-fargate.1.0",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "contenedor-fargate-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [
+                {
+                    "sourceVolume": "DockerEfs",
+                    "containerPath": "/docker",
+                    "readOnly": false
+                }
+            ],
+            "volumesFrom": [],
+            "startTimeout": 10,
+            "ulimits": [],
+            "systemControls": []
+        }
+    ],
+    "family": "nginx-fargate",
+    "taskRoleArn": "arn:aws:iam::134383757275:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::134383757275:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 7,
+    "volumes": [
+        {
+            "name": "DockerEfs",
+            "efsVolumeConfiguration": {
+                "fileSystemId": "fs-0d833b4f0b4685f95",
+                "rootDirectory": "/"
+            }
+        }
+    ],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "ecs.capability.efsAuth"
+        },
+        {
+            "name": "ecs.capability.efs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.container-ordering"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.25"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2024-06-15T02:02:53.996Z",
+    "registeredBy": "arn:aws:iam::134383757275:root",
+    "tags": []
+}
